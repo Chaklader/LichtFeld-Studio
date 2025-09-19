@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# command to run:
+# nohup tools/generate_colmap_improved.sh > colmap.log 2>&1 &
+
 # Improved COLMAP script for better reconstruction quality
 # Setup directory and environment
 cd ~/data/livingroom
@@ -11,6 +15,7 @@ echo "Starting improved COLMAP reconstruction..."
 
 # Step 1: Feature extraction with higher quality settings
 echo "Step 1: Feature extraction..."
+
 colmap feature_extractor \
     --database_path database.db \
     --image_path images \
@@ -26,18 +31,17 @@ colmap feature_extractor \
 
 # Step 2: Feature matching with better settings
 echo "Step 2: Feature matching..."
-nohup colmap exhaustive_matcher \
+
+colmap exhaustive_matcher \
     --database_path database.db \
     --SiftMatching.use_gpu 0 \
     --SiftMatching.guided_matching 1 \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
     --SiftMatching.max_distance 0.8 \
-    --SiftMatching.max_num_matches 16384 \
-    > ~/tools/colmap_improved.log 2>&1 &
+    --SiftMatching.max_num_matches 16384 
 
 echo "Waiting for matching to complete..."
-wait
 
 # Step 3: Sparse reconstruction with stricter requirements
 echo "Step 3: Sparse reconstruction..."
