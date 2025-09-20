@@ -33,11 +33,4 @@ MIN_OPACITY=0.005
   --min-opacity 0.005 \
   --init-num-pts 200000 \
   --init-extent 3.0 \
-  --init-scaling 0.1 \
-  --init-opacity 0.1 \
-  --opacity-reg 0.01 \
-  --scale-reg 0.01 \
-  --tv-loss-weight 10 \
-  --stop-refine 13000 \
-  --lambda-dssim 0.2 \
   > train.log 2>&1 &
