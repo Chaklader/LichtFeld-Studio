@@ -1,9 +1,9 @@
 {
   "iterations": 15000,
   "sh_degree_interval": 1000,
-  "means_lr": 0.0002,
-  "shs_lr": 0.004,
-  "opacity_lr": 0.08,
+  "means_lr": 0.00005,
+  "shs_lr": 0.001,
+  "opacity_lr": 0.02,
   "scaling_lr": 0.005,
   "rotation_lr": 0.001,
   "lambda_dssim": 0.15,
@@ -15,8 +15,8 @@
   "sh_degree": 4,
   "opacity_reg": 0.01,
   "scale_reg": 0.01,
-  "init_opacity": 0.5,
-  "init_scaling": 0.03,
+  "init_opacity": 0.1,
+  "init_scaling": 0.1,
   "max_cap": 3000000,
   "render_mode": "RGB",
   "strategy": "mcmc",
@@ -45,6 +45,6 @@
   "antialiasing": false,
   "random": false,
   "tv_loss": 100000,
-  "init_num_pts": 500000,
+  "init_num_pts": 200000,
   "init_extent": 3.0
 }
