@@ -7,8 +7,14 @@
 echo "Starting optimized LichtFeld Studio training..."
 
 # Training parameters - modify these as needed
+# Choose dataset type:
+# COLMAP data (your current):
 DATASET_PATH="/home/user/data/livingroom"
 OUTPUT_PATH="output/livingroom"
+
+# Nerfstudio data (for smaller PLY files):
+# DATASET_PATH="/home/user/data/livingroom_nerfstudio"  
+# OUTPUT_PATH="output/livingroom_nerfstudio"
 MAX_CAP=2000000
 STRATEGY="mcmc"
 INIT_POINTS=200000
