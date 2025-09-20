@@ -55,8 +55,7 @@ ns-process-data images \
   --data        "$RAW_DATA_DIR" \
   --output-dir  "$OUTPUT_DIR" \
   --num-downscales 0 \
-  --no-gpu \
-  > nerf.log 2>&1 &
+  --no-gpu
 
 echo "Process started with PID: $!"
 echo "Monitor progress with: tail -f nerf.log"
