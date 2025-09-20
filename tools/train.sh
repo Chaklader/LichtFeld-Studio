@@ -36,12 +36,3 @@ MIN_OPACITY=0.005
     --init-extent ${INIT_EXTENT} \
     > train.log 2>&1 &
 
-# Get the process ID
-PID=$!
-echo "Training started with PID: ${PID}"
-echo "Monitor progress with: tail -f train.log"
-echo "Check process with: ps aux | grep ${PID}"
-
-# Save PID for easy killing if needed
-echo ${PID} > train.pid
-echo "PID saved to train.pid - kill with: kill \$(cat train.pid)"
