@@ -18,8 +18,8 @@ MIN_OPACITY=0.005
 
 # Run the optimized training command
 ./build/LichtFeld-Studio \
-  -d /home/user/data/livingroom \
-  -o output/livingroom_psnr15k \
+  -d ${DATASET_PATH} \
+  -o ${OUTPUT_PATH} \
   --eval \
   --save-eval-images \
   --render-mode RGB \
@@ -29,7 +29,7 @@ MIN_OPACITY=0.005
   --antialiasing \
   --strategy mcmc \
   --max-cap 3000000 \
-  --sh-degree 3 \
+  --sh-degree 4 \
   --min-opacity 0.005 \
   --init-num-pts 200000 \
   --init-extent 3.0 \
