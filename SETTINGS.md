@@ -186,9 +186,9 @@ MIN_OPACITY=0.005
 - **Training Time**: 1.8899s/image
 
 ### Progress Tracking:
-- **7k iterations**: PSNR **22.00 dB** (best yet!)
-- **10k iterations**: (pending)
-- **15k iterations**: (pending)
+- **7k iterations**: PSNR **22.00 dB** (PEAK) ⭐
+- **10k iterations**: PSNR 20.42 dB (-1.58 dB drop, overfitting)
+- **15k iterations**: (stopped due to overfitting)
 
 ### MCMC Parameters (parameter/mcmc_optimization_params.json):
 ```json
@@ -236,10 +236,10 @@ MIN_OPACITY=0.005
 - **Fake parameters ignored**: `tv_loss`, `bg_modulation`
 
 ### Analysis:
-- **Steady progress**: 19.54 → 20.74 → **22.00 dB** 
-- **Closing gap**: Now only 6.1 dB from reference (28.11 dB)
-- **Ultra-aggressive strategy working**: Early, frequent, sensitive densification is key
-- **Waiting for 10k results** to confirm stability
+- **Peak performance at 7k**: 22.00 dB is our best result
+- **Clear overfitting after 7k**: Drop to 20.42 dB at 10k
+- **Ultra-aggressive densification**: Works but causes overfitting
+- **Key insight**: Need to STOP at 7k or adjust strategy after 7k
 
 ---
 
