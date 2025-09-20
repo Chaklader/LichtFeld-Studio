@@ -23,7 +23,7 @@ MIN_OPACITY=0.005
   --eval \
   --save-eval-images \
   --render-mode RGB \
-  -i 15000 \
+  -i 7000 \
   --gut \
   --headless \
   --antialiasing \
