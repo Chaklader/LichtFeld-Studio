@@ -7,7 +7,7 @@
 echo "Starting optimized LichtFeld Studio training..."
 
 # Training parameters - modify these as needed
-DATASET_PATH="~/data/livingroom"
+DATASET_PATH="/home/user/data/livingroom"
 OUTPUT_PATH="output/livingroom"
 ITERATIONS=8000
 MAX_CAP=3000000
@@ -35,4 +35,3 @@ MIN_OPACITY=0.005
     --init-num-pts ${INIT_POINTS} \
     --init-extent ${INIT_EXTENT} \
     > train.log 2>&1 &
-
