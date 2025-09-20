@@ -9,9 +9,9 @@ echo "Starting optimized LichtFeld Studio training..."
 # Training parameters - modify these as needed
 DATASET_PATH="/home/user/data/livingroom"
 OUTPUT_PATH="output/livingroom"
-MAX_CAP=3000000
+MAX_CAP=5000000
 STRATEGY="default"
-INIT_POINTS=200000
+INIT_POINTS=300000
 INIT_EXTENT=3.0
 SH_DEGREE=3
 MIN_OPACITY=0.005
@@ -28,9 +28,9 @@ MIN_OPACITY=0.005
   --headless \
   --antialiasing \
   --strategy mcmc \
-  --max-cap 3000000 \
+  --max-cap ${MAX_CAP} \
   --sh-degree 4 \
-  --min-opacity 0.005 \
-  --init-num-pts 200000 \
-  --init-extent 3.0 \
+  --min-opacity ${MIN_OPACITY} \
+  --init-num-pts ${INIT_POINTS} \
+  --init-extent ${INIT_EXTENT} \
   > train.log 2>&1 &
