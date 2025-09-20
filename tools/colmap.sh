@@ -22,12 +22,15 @@ colmap feature_extractor \
     --ImageReader.single_camera 1 \
     --ImageReader.camera_model PINHOLE \
     --SiftExtraction.use_gpu 0 \
-    --SiftExtraction.max_num_features 16384 \
+    --SiftExtraction.max_num_features 8192 \
     --SiftExtraction.first_octave -1 \
     --SiftExtraction.num_octaves 4 \
     --SiftExtraction.octave_resolution 3 \
     --SiftExtraction.peak_threshold 0.01 \
     --SiftExtraction.edge_threshold 10
+
+sleep 5
+
 
 # Step 2: Feature matching with better settings
 echo "Step 2: Feature matching..."
@@ -39,9 +42,11 @@ colmap exhaustive_matcher \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
     --SiftMatching.max_distance 0.8 \
-    --SiftMatching.max_num_matches 16384 
+    --SiftMatching.max_num_matches 8192 
 
 echo "Waiting for matching to complete..."
+
+sleep 5
 
 # Step 3: Sparse reconstruction with stricter requirements
 echo "Step 3: Sparse reconstruction..."
@@ -60,6 +65,8 @@ colmap mapper \
     --Mapper.ba_refine_principal_point 1 \
     --Mapper.ba_refine_extra_params 0 \
     --Mapper.multiple_models 0
+
+sleep 5
 
 # Step 4: Quality check
 echo "Step 4: Quality assessment..."
