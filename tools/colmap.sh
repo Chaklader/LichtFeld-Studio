@@ -82,4 +82,4 @@ else
     exit 1
 fi
 
-echo "COLMAP reconstruction complete. Use ~/data/livingroom_colmap_v2 for training."
+echo "COLMAP reconstruction complete..."
