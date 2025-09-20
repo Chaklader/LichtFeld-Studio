@@ -176,6 +176,82 @@ MIN_OPACITY=0.005
 
 ---
 
+## Iteration #3 - Ultra-Aggressive Densification
+
+### Results:
+- **PSNR**: 22.0017 dB (at 7k iterations) 🎉 **+1.26 dB improvement!**
+- **SSIM**: 0.8388
+- **LPIPS**: 0.5182
+- **Gaussians**: 3,000,000
+- **Training Time**: 1.8899s/image
+
+### Progress Tracking:
+- **7k iterations**: PSNR **22.00 dB** (best yet!)
+- **10k iterations**: (pending)
+- **15k iterations**: (pending)
+
+### MCMC Parameters (parameter/mcmc_optimization_params.json):
+```json
+{
+  "iterations": 15000,
+  "sh_degree_interval": 1000,
+  "means_lr": 0.00025,
+  "shs_lr": 0.008,         // Further increased from 0.005
+  "opacity_lr": 0.1,
+  "scaling_lr": 0.005,
+  "rotation_lr": 0.001,
+  "lambda_dssim": 0.15,
+  "min_opacity": 0.005,
+  "refine_every": 25,      // Ultra-frequent (was 50)
+  "start_refine": 100,     // Super early (was 200)
+  "stop_refine": 13000,
+  "grad_threshold": 0.00002, // Ultra-sensitive (was 0.00005)
+  "sh_degree": 4,
+  "opacity_reg": 0.001,    // Minimal regularization (was 0.005)
+  "scale_reg": 0.001,      // Minimal regularization (was 0.005)
+  "init_opacity": 0.1,
+  "init_scaling": 0.1,
+  "max_cap": 3000000,
+  "init_num_pts": 200000,
+  "init_extent": 3.0
+}
+```
+
+### Key Changes from Iteration #2:
+1. **Ultra-Aggressive Densification**:
+   - Gradient threshold: 0.00005 → 0.00002 (2.5x more sensitive)
+   - Refine frequency: 50 → 25 iterations (2x more frequent)
+   - Start refine: 200 → 100 (super early start)
+
+2. **Enhanced Color Learning**:
+   - SH Features LR: 0.005 → 0.008 (60% increase)
+
+3. **Minimal Regularization**:
+   - Opacity/Scale reg: 0.005 → 0.001 (5x reduction)
+
+### Log Insights:
+- **Confirmed working**: Ultra-aggressive densification capturing fine details
+- **10x more sensitive** than default grad_threshold (0.00002 vs 0.0002)
+- **4x more frequent** than default refine_every (25 vs 100)
+- **Fake parameters ignored**: `tv_loss`, `bg_modulation`
+
+### Analysis:
+- **Steady progress**: 19.54 → 20.74 → **22.00 dB** 
+- **Closing gap**: Now only 6.1 dB from reference (28.11 dB)
+- **Ultra-aggressive strategy working**: Early, frequent, sensitive densification is key
+- **Waiting for 10k results** to confirm stability
+
+---
+
+## Progress Summary:
+| Iteration | 7k PSNR | Improvement | Gap to Reference |
+|-----------|---------|-------------|------------------|
+| #1        | 19.54   | Baseline    | 8.57 dB         |
+| #2        | 20.74   | +1.20 dB    | 7.37 dB         |
+| #3        | 22.00   | +1.26 dB    | 6.11 dB         |
+
+---
+
 ## Next Iteration Planning:
 **Target**: Push toward 25+ dB PSNR
-**Strategy**: Even more aggressive densification, explore color learning rates
+**Strategy**: If 10k maintains/improves, try absolute limits (grad_threshold: 0.00001)
