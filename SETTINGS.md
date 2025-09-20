@@ -1,3 +1,13 @@
+
+---
+
+ Iteration      PSNR      SSIM     LPIPS    Time(s/img)     #Gaussians
+---------------------------------------------------------------------------
+      7000   28.1126    0.8711    0.3583         0.3686        2000000
+     30000   29.9522    0.8842    0.3246         0.3446        2000000
+
+---
+
 # LichtFeld Studio Training Optimization Log
 
 ## Iteration #1 - Optimized Learning Rates & Densification
@@ -11,7 +21,7 @@
 
 ### Progress Tracking:
 - **7k iterations**: PSNR 19.54 dB
-- **10k iterations**: PSNR 19.29 dB  
+- **10k iterations**: PSNR 19.29 dB
 - **15k iterations**: PSNR 18.54 dB (final)
 
 ### Training Command Used:
