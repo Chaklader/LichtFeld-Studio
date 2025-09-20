@@ -9,9 +9,9 @@ echo "Starting optimized LichtFeld Studio training..."
 # Training parameters - modify these as needed
 DATASET_PATH="/home/user/data/livingroom"
 OUTPUT_PATH="output/livingroom"
-MAX_CAP=5000000
+MAX_CAP=4000000
 STRATEGY="default"
-INIT_POINTS=300000
+INIT_POINTS=200000
 INIT_EXTENT=3.0
 SH_DEGREE=3
 MIN_OPACITY=0.005
