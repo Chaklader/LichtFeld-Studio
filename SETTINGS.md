@@ -252,6 +252,76 @@ MIN_OPACITY=0.005
 
 ---
 
+## Iteration #4 - THE BREAKTHROUGH: Stabilization Period! 🎉
+
+### Results:
+- **PSNR**: **23.6269 dB** (at 7k iterations) 🚀 **+1.63 dB improvement!**
+- **SSIM**: 0.8462
+- **LPIPS**: 0.5056
+- **Gaussians**: 3,000,000
+- **Training Time**: 1.8192s/image
+
+### Progress Tracking:
+- **7k iterations**: PSNR **23.63 dB** (NEW RECORD!) ⭐
+- **10k iterations**: Not tested (stopped at peak)
+- **15k iterations**: Not needed
+
+### MCMC Parameters (parameter/mcmc_optimization_params.json):
+```json
+{
+  "iterations": 15000,  // Will optimize to 7000 next
+  "sh_degree_interval": 1000,
+  "means_lr": 0.00025,
+  "shs_lr": 0.008,
+  "opacity_lr": 0.1,
+  "scaling_lr": 0.005,
+  "rotation_lr": 0.001,
+  "lambda_dssim": 0.15,
+  "min_opacity": 0.005,
+  "refine_every": 25,
+  "start_refine": 100,
+  "stop_refine": 6500,     // 🔑 THE KEY CHANGE!
+  "grad_threshold": 0.00002,
+  "sh_degree": 4,
+  "opacity_reg": 0.001,
+  "scale_reg": 0.001,
+  "init_opacity": 0.1,
+  "init_scaling": 0.1,
+  "max_cap": 3000000,
+  "init_num_pts": 200000,
+  "init_extent": 3.0
+}
+```
+
+### 🔑 KEY DISCOVERY:
+**The magic was `stop_refine: 6500` (was 13000)**
+- **Iterations 100-6500**: Aggressive densification (add Gaussians)
+- **Iterations 6500-7000**: STABILIZATION ONLY (optimize existing)
+- **Result**: 500 iterations of pure refinement = **+1.63 dB boost!**
+
+### Key Insight:
+- **Over-densification was killing quality** - too many Gaussians added late
+- **Stabilization period is CRITICAL** - existing Gaussians need time to optimize
+- **Timing is everything** - stop adding at the right moment
+
+### Analysis:
+- **Massive breakthrough**: 22.00 → **23.63 dB** (+1.63 dB)
+- **Gap to reference**: Now only 4.48 dB from 28.11 dB target
+- **Proves stabilization period theory** - no new Gaussians after 6500 is key
+- **Most successful iteration yet!**
+
+---
+
+## Progress Summary:
+| Iteration | 7k PSNR | Improvement | Key Change | Gap to Reference |
+|-----------|---------|-------------|------------|------------------|
+| #1        | 19.54   | Baseline    | Initial optimization | 8.57 dB |
+| #2        | 20.74   | +1.20 dB    | Reduced regularization | 7.37 dB |
+| #3        | 22.00   | +1.26 dB    | Ultra-aggressive densify | 6.11 dB |
+| #4        | **23.63** | **+1.63 dB** | **Stabilization period!** | **4.48 dB** |
+
+---
+
 ## Next Iteration Planning:
-**Target**: Push toward 25+ dB PSNR
-**Strategy**: If 10k maintains/improves, try absolute limits (grad_threshold: 0.00001)
+**Target**: Push toward 25-26 dB PSNR
+**Strategy**: Optimize stabilization period (try stop_refine: 6000 or 5500)
