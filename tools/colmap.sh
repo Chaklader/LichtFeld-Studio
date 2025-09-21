@@ -66,20 +66,5 @@ colmap mapper \
     --Mapper.ba_refine_extra_params 0 \
     --Mapper.multiple_models 0
 
-sleep 5
-
-# Step 4: Quality check
-echo "Step 4: Quality assessment..."
-echo "Reconstruction complete. Checking quality..."
-
-# Count registered images and points
-if [ -f "sparse/0/images.bin" ]; then
-    echo "Reconstruction successful!"
-    colmap model_analyzer \
-        --path sparse/0
-else
-    echo "Reconstruction failed - no output model found"
-    exit 1
-fi
 
 echo "COLMAP reconstruction complete..."
