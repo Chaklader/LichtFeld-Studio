@@ -6,7 +6,7 @@
 
 # Improved COLMAP script for better reconstruction quality
 # Setup directory and environment
-cd ~/data/livingroom
+cd ~/data/model_18567
 
 export QT_QPA_PLATFORM=offscreen
 export DISPLAY=
