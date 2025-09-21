@@ -66,7 +66,7 @@ ns-process-data images \
   --camera-type pinhole \
   --matching-method exhaustive \
   --feature-type sift \
-  --num-keypoints 8192 \
+  --num-keypoints 16384 \
   --overwrite \
   > nerf.log 2>&1 &
 
