@@ -42,7 +42,7 @@ colmap exhaustive_matcher \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
     --SiftMatching.max_distance 0.8 \
-    --FeatureMatching.max_num_matches 65536 
+    --FeatureMatching.max_num_matches 16384 
 
 echo "Waiting for matching to complete..."
 
