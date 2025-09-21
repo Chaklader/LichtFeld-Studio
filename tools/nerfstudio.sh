@@ -51,13 +51,24 @@ echo "[process_dataset] Converting $RAW_DATA_DIR → $OUTPUT_DIR (downscales=$NU
 export QT_QPA_PLATFORM=offscreen
 
 # Run ns-process-data (CPU-only via --no-gpu)
+# ns-process-data images \
+#   --data        "$RAW_DATA_DIR" \
+#   --output-dir  "$OUTPUT_DIR" \
+#   --num-downscales 0 \
+#   --no-gpu \
+#   --camera-type pinhole
+
 ns-process-data images \
   --data        "$RAW_DATA_DIR" \
   --output-dir  "$OUTPUT_DIR" \
   --num-downscales 0 \
   --no-gpu \
-  --camera-type pinhole
+  --skip-colmap \
+  --camera-type pinhole \
+  --matching-method exhaustive \
+  --feature-type sift \
+  --num-keypoints 8192 \
+  --overwrite \
+  > nerf.log 2>&1 &
 
-echo "Process started with PID: $!"
-echo "Monitor progress with: tail -f nerf.log"
-
+echo "Dataset processed successfully!"
