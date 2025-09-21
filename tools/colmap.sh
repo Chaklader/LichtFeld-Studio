@@ -22,7 +22,7 @@ colmap feature_extractor \
     --ImageReader.single_camera 1 \
     --ImageReader.camera_model PINHOLE \
     --FeatureExtraction.use_gpu 1 \
-    --SiftExtraction.max_num_features 8192 \
+    --SiftExtraction.max_num_features 32768 \
     --SiftExtraction.first_octave -1 \
     --SiftExtraction.num_octaves 4 \
     --SiftExtraction.octave_resolution 3 \
@@ -42,7 +42,7 @@ colmap exhaustive_matcher \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
     --SiftMatching.max_distance 0.8 \
-    --FeatureMatching.max_num_matches 8192 
+    --FeatureMatching.max_num_matches 65536 
 
 echo "Waiting for matching to complete..."
 
