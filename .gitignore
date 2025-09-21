@@ -27,6 +27,8 @@ vcpkg_*/
 build*/
 build*/**
 
+*.log
+
 *.pt
 !weights/*.pt
 lichtfeld-studio.aps
