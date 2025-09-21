@@ -17,11 +17,10 @@ OUTPUT_PATH="output/livingroom"
 # OUTPUT_PATH="output/livingroom_nerfstudio"
 MAX_CAP=1000000
 STRATEGY="mcmc"
-INIT_POINTS=300000
+INIT_POINTS=200000
 INIT_EXTENT=3.0
 SH_DEGREE=3
 MIN_OPACITY=0.005
-PRUNE_RATIO=0.65
 
 
 # Run the optimized training command
@@ -41,6 +40,5 @@ PRUNE_RATIO=0.65
   --min-opacity ${MIN_OPACITY} \
   --init-num-pts ${INIT_POINTS} \
   --init-extent ${INIT_EXTENT} \
-  --prune-ratio ${PRUNE_RATIO} \
   --enable-sparsity \
   > train.log 2>&1 &
