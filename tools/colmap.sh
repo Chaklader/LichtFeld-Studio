@@ -38,11 +38,11 @@ echo "Step 2: Feature matching..."
 colmap exhaustive_matcher \
     --database_path database.db \
     --FeatureMatching.use_gpu 1 \
-    --SiftMatching.guided_matching 1 \
+    --FeatureMatching.guided_matching 1 \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
     --SiftMatching.max_distance 0.8 \
-    --SiftMatching.max_num_matches 8192 
+    --FeatureMatching.max_num_matches 8192 
 
 echo "Waiting for matching to complete..."
 
