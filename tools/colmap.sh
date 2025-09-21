@@ -21,7 +21,7 @@ colmap feature_extractor \
     --image_path images \
     --ImageReader.single_camera 1 \
     --ImageReader.camera_model PINHOLE \
-    --SiftExtraction.use_gpu 0 \
+    --SiftExtraction.use_gpu 1 \
     --SiftExtraction.max_num_features 8192 \
     --SiftExtraction.first_octave -1 \
     --SiftExtraction.num_octaves 4 \
@@ -37,7 +37,7 @@ echo "Step 2: Feature matching..."
 
 colmap exhaustive_matcher \
     --database_path database.db \
-    --SiftMatching.use_gpu 0 \
+    --SiftMatching.use_gpu 1 \
     --SiftMatching.guided_matching 1 \
     --SiftMatching.cross_check 1 \
     --SiftMatching.max_ratio 0.75 \
