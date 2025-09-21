@@ -62,7 +62,6 @@ ns-process-data images \
   --data        "$RAW_DATA_DIR" \
   --output-dir  "$OUTPUT_DIR" \
   --num-downscales 0 \
-  --no-gpu \
   --skip-colmap \
   --camera-type pinhole \
   --matching-method exhaustive \
