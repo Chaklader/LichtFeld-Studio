@@ -21,9 +21,7 @@ INIT_POINTS=100000
 INIT_EXTENT=3.0
 SH_DEGREE=3
 MIN_OPACITY=0.005
-PRUNE_OPACITY=0.005
-PRUNE_SCALE3D=0.1
-PRUNE_SCALE2D=0.15
+PRUNE_RATIO=0.7
 
 # Run the optimized training command
 ./build/LichtFeld-Studio \
@@ -42,7 +40,6 @@ PRUNE_SCALE2D=0.15
   --min-opacity ${MIN_OPACITY} \
   --init-num-pts ${INIT_POINTS} \
   --init-extent ${INIT_EXTENT} \
-  --prune-opacity ${PRUNE_OPACITY} \
-  --prune-scale3d ${PRUNE_SCALE3D} \
-  --prune-scale2d ${PRUNE_SCALE2D} \
+  --prune-ratio ${PRUNE_RATIO} \
+  --enable-sparsity \
   > train.log 2>&1 &
