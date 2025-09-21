@@ -40,5 +40,4 @@ MIN_OPACITY=0.005
   --min-opacity ${MIN_OPACITY} \
   --init-num-pts ${INIT_POINTS} \
   --init-extent ${INIT_EXTENT} \
-  --enable-sparsity \
   > train.log 2>&1 &
