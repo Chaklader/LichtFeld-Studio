@@ -17,11 +17,12 @@ OUTPUT_PATH="output/livingroom"
 # OUTPUT_PATH="output/livingroom_nerfstudio"
 MAX_CAP=1000000
 STRATEGY="mcmc"
-INIT_POINTS=100000
+INIT_POINTS=300000
 INIT_EXTENT=3.0
 SH_DEGREE=3
 MIN_OPACITY=0.005
-PRUNE_RATIO=0.7
+PRUNE_RATIO=0.65
+
 
 # Run the optimized training command
 ./build/LichtFeld-Studio \
