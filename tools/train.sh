@@ -31,8 +31,6 @@ STEPS_SCALER=2.0
 ./build/LichtFeld-Studio \
   -d ${DATASET_PATH} \
   -o ${OUTPUT_PATH} \
-  --eval \
-  --save-eval-images \
   --render-mode RGB \
   -i ${ITERATIONS} \
   --gut \
