@@ -17,11 +17,11 @@ OUTPUT_PATH="output/apartment"
 # OUTPUT_PATH="output/livingroom_nerfstudio"
 
 # Parameters that achieved PSNR 20.87
-MAX_CAP=2000000
+MAX_CAP=1000000
 STRATEGY="mcmc"
 INIT_POINTS=500000
 INIT_EXTENT=6.0
-SH_DEGREE=4
+SH_DEGREE=3
 MIN_OPACITY=0.001
 ITERATIONS=7000
 
