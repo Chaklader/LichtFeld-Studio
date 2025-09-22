@@ -16,16 +16,29 @@ OUTPUT_PATH="output/apartment"
 # DATASET_PATH="/home/user/data/livingroom_nerfstudio"  
 # OUTPUT_PATH="output/livingroom_nerfstudio"
 
-# Optimized parameters now in JSON config file
-INIT_POINTS=1000000
-INIT_EXTENT=8.0
+# Parameters that achieved PSNR 20.87
+MAX_CAP=2000000
+STRATEGY="mcmc"
+INIT_POINTS=500000
+INIT_EXTENT=6.0
+SH_DEGREE=4
+MIN_OPACITY=0.001
+ITERATIONS=7000
 
-# Run the optimized training command using JSON config
+# Run the training command
 ./build/LichtFeld-Studio \
   -d ${DATASET_PATH} \
   -o ${OUTPUT_PATH} \
+  --eval \
+  --save-eval-images \
+  --render-mode RGB \
+  -i ${ITERATIONS} \
   --headless \
   --antialiasing \
+  --strategy ${STRATEGY} \
+  --max-cap ${MAX_CAP} \
+  --sh-degree ${SH_DEGREE} \
+  --min-opacity ${MIN_OPACITY} \
   --init-num-pts ${INIT_POINTS} \
   --init-extent ${INIT_EXTENT} \
   > train.log 2>&1 &
