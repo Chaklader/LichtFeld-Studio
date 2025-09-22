@@ -25,7 +25,7 @@
   "pose_optimization": "none",
   "enable_eval": false,
   "enable_save_eval_images": true,
-  "use_bilateral_grid": true,
+  "use_bilateral_grid": false,
   "skip_intermediate": false,
   "bg_modulation": false,
   "bilateral_grid_X": 16,
