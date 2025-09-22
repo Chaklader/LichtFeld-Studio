@@ -10,7 +10,7 @@
   "min_opacity": 0.01,
   "refine_every": 25,
   "start_refine": 100,
-  "stop_refine": 8000,
+  "stop_refine": 11000,
   "grad_threshold": 0.0001,
   "sh_degree": 4,
   "opacity_reg": 0.001,
