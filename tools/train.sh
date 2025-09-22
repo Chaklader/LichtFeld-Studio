@@ -15,7 +15,7 @@ OUTPUT_PATH="output/apartment"
 # Nerfstudio data (for smaller PLY files):
 # DATASET_PATH="/home/user/data/livingroom_nerfstudio"  
 # OUTPUT_PATH="output/livingroom_nerfstudio"
-MAX_CAP=1000000
+MAX_CAP=3000000
 STRATEGY="mcmc"
 INIT_POINTS=200000
 INIT_EXTENT=3.0
