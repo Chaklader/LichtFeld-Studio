@@ -15,12 +15,15 @@ OUTPUT_PATH="output/apartment"
 # Nerfstudio data (for smaller PLY files):
 # DATASET_PATH="/home/user/data/livingroom_nerfstudio"  
 # OUTPUT_PATH="output/livingroom_nerfstudio"
-MAX_CAP=3000000
+
+# Improved parameters for difficult scenes
+MAX_CAP=2000000
 STRATEGY="mcmc"
-INIT_POINTS=200000
-INIT_EXTENT=3.0
-SH_DEGREE=3
-MIN_OPACITY=0.005
+INIT_POINTS=500000
+INIT_EXTENT=6.0
+SH_DEGREE=4
+MIN_OPACITY=0.001
+ITERATIONS=15000
 
 
 # Run the optimized training command
@@ -30,7 +33,7 @@ MIN_OPACITY=0.005
   --eval \
   --save-eval-images \
   --render-mode RGB \
-  -i 7000 \
+  -i ${ITERATIONS} \
   --gut \
   --headless \
   --antialiasing \
