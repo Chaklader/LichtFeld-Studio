@@ -18,7 +18,7 @@ OUTPUT_PATH="output/apartment"
 
 # Parameters that achieved PSNR 20.87
 MAX_CAP=1000000
-STRATEGY="default"
+STRATEGY="mcmc"
 INIT_POINTS=500000
 INIT_EXTENT=6.0
 SH_DEGREE=3
