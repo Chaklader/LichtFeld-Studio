@@ -33,7 +33,6 @@ STEPS_SCALER=2.0
   -o ${OUTPUT_PATH} \
   --render-mode RGB \
   -i ${ITERATIONS} \
-  --gut \
   --headless \
   --antialiasing \
   --strategy ${STRATEGY} \
