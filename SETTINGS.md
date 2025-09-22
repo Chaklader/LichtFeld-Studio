@@ -322,6 +322,55 @@ MIN_OPACITY=0.005
 
 ---
 
+## Iteration #5 - Extended Stabilization Period (Apartment Dataset)
+
+### Results:
+- **PSNR**: **24+ dB** (at 7k iterations) 🚀 **+3+ dB improvement from 20.87!**
+- **Dataset**: Apartment (complex indoor scene)
+- **COLMAP Quality**: Excellent (416/416 images registered, 512K 3D points)
+- **Training Time**: ~7 minutes (rapid iteration cycle)
+
+### MCMC Parameters (parameter/mcmc_optimization_params.json):
+```json
+{
+  "iterations": 7000,
+  "stop_refine": 5000,     // 🔑 KEY CHANGE: Extended stabilization
+  "start_refine": 100,
+  "refine_every": 25,
+  "grad_threshold": 0.0001,
+  "means_lr": 0.00025,
+  "shs_lr": 0.008,
+  "opacity_lr": 0.1,
+  "lambda_dssim": 0.15,
+  "min_opacity": 0.01,
+  "max_cap": 2000000,
+  "sh_degree": 4
+}
+```
+
+### 🔑 KEY DISCOVERY - Extended Stabilization:
+**Previous (PSNR 20.87)**: `stop_refine: 6500` (500 iterations stabilization)
+**Current (PSNR 24+)**: `stop_refine: 5000` (2000 iterations stabilization)
+
+- **Iterations 100-5000**: Aggressive densification (add Gaussians)
+- **Iterations 5000-7000**: **PURE OPTIMIZATION** (2000 iterations, no new Gaussians)
+- **Result**: 4× longer stabilization = **+3+ dB boost!**
+
+### Research Insights:
+1. **Stabilization Period is Critical**: Longer pure optimization dramatically improves PSNR
+2. **Early Stop Helps**: Stopping Gaussian addition earlier prevents over-densification
+3. **Rapid Iteration Advantage**: 7K iterations perfect for research - fast parameter testing
+4. **Dataset Agnostic**: Works on both livingroom and apartment scenes
+
+### Analysis:
+- **Major success**: 20.87 → **24+ dB** (+3+ dB improvement)
+- **Research target**: Boss needs 30+ dB PSNR
+- **Next test**: `stop_refine: 4000` (3000 iterations stabilization)
+- **Strategy**: Systematic stabilization period optimization
+
+---
+
 ## Next Iteration Planning:
-**Target**: Push toward 25-26 dB PSNR
-**Strategy**: Optimize stabilization period (try stop_refine: 6000 or 5500)
+**Target**: Push toward 30+ dB PSNR (research requirement)
+**Strategy**: Continue optimizing stabilization period (testing stop_refine: 4000)
+**Approach**: Systematic parameter sweeps with rapid 7K iteration cycles
