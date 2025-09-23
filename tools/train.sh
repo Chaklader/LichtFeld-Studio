@@ -34,7 +34,7 @@ ITERATIONS=7000
   --render-mode RGB \
   -i ${ITERATIONS} \
   --headless \
-  --antialiasing \
+  --gut \
   --strategy ${STRATEGY} \
   --max-cap ${MAX_CAP} \
   --sh-degree ${SH_DEGREE} \
