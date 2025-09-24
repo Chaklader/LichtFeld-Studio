@@ -16,6 +16,7 @@ data
 *.py
 .venv/
 *.png
+*.log
 *.sqlite
 test.py
 *.nsys-rep
