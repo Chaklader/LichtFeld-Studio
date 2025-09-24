@@ -9,13 +9,13 @@ EXPERIMENT_NAME="55222299-cf7b-447a-9cf3-ecd579ff96ec"
 PROJECT_NAME="DC-DEV-AREFE"
 
 # Output path (default to apt results)
-OUTPUT_PATH=${1:-"output/apt"}
+OUTPUT_PATH=${1:-"output/colmap_workspace"}
 
 # Check if wandb is installed
-if ! command -v wandb &> /dev/null; then
-    echo "Installing wandb..."
-    pip3 install wandb
-fi
+# if ! command -v wandb &> /dev/null; then
+#     echo "Installing wandb..."
+#     pip3 install wandb
+# fi
 
 # Initialize wandb
 export WANDB_API_KEY=$WANDB_API_KEY
@@ -29,18 +29,18 @@ echo "Output path: $OUTPUT_PATH"
 # Create wandb run
 wandb init --project "$PROJECT_NAME" --name "$EXPERIMENT_NAME"
 
-# Log basic configuration
+# Log basic configuration (matching train.sh)
 wandb config update <<EOF
 {
-  "dataset_path": "/home/user/data/apt",
-  "output_path": "$OUTPUT_PATH",
+  "dataset_path": "/home/user/data/colmap_workspace",
+  "output_path": "output/colmap_workspace",
   "strategy": "mcmc",
   "iterations": 7000,
-  "render_mode": "RGB",
+  "render_mode": "RGB_D",
   "headless": true,
-  "gut": true,
   "eval": true,
-  "save_eval_images": true
+  "save_eval_images": true,
+  "stop_refine": 5000
 }
 EOF
 
