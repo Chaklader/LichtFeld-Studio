@@ -12,8 +12,6 @@ OUTPUT_PATH="output/colmap_workspace"
     --eval \
     --save-eval-images \
     --render-mode RGB_D \
-    --start_refine 100 \
-    --stop_refine 5500 \
     -i 7000 \
     > train.log 2>&1 &
 
