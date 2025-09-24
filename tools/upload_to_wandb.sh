@@ -36,7 +36,7 @@ wandb config update <<EOF
   "output_path": "output/colmap_workspace",
   "strategy": "mcmc",
   "iterations": 7000,
-  "render_mode": "RGB_D",
+  "render_mode": "RGB",
   "headless": true,
   "eval": true,
   "save_eval_images": true,
