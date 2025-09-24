@@ -11,11 +11,16 @@ PROJECT_NAME="DC-DEV-AREFE"
 # Output path (default to apt results)
 OUTPUT_PATH=${1:-"output/colmap_workspace"}
 
-# Check if wandb is installed
-python3 -c "import wandb" 2>/dev/null || {
-    echo "Installing wandb..."
-    pip3 install wandb
-}
+# Create a temporary virtual environment for wandb
+TEMP_VENV="/tmp/wandb_venv_$$"
+
+echo "Creating temporary virtual environment for wandb..."
+python3 -m venv "$TEMP_VENV"
+source "$TEMP_VENV/bin/activate"
+
+# Install wandb in the virtual environment
+echo "Installing wandb in virtual environment..."
+pip install wandb
 
 # Initialize wandb using Python API
 export WANDB_API_KEY=$WANDB_API_KEY
@@ -160,3 +165,10 @@ if os.path.exists(train_log):
 print("Upload completed! Check your wandb dashboard at: https://wandb.ai/DC-DEV-AREFE")
 wandb.finish()
 EOF
+
+# Cleanup: deactivate and remove temporary virtual environment
+deactivate
+echo "Cleaning up temporary virtual environment..."
+rm -rf "$TEMP_VENV"
+
+echo "Upload process completed!"
