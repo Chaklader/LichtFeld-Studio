@@ -12,10 +12,10 @@ PROJECT_NAME="DC-DEV-AREFE"
 OUTPUT_PATH=${1:-"output/colmap_workspace"}
 
 # Check if wandb is installed
-# if ! command -v wandb &> /dev/null; then
-#     echo "Installing wandb..."
-#     pip3 install wandb
-# fi
+python3 -c "import wandb" 2>/dev/null || {
+    echo "Installing wandb..."
+    pip3 install wandb
+}
 
 # Initialize wandb using Python API
 export WANDB_API_KEY=$WANDB_API_KEY
