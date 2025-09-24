@@ -2,24 +2,17 @@
 
 echo "Starting optimized LichtFeld Studio training..."
 
-DATASET_PATH="/home/user/data/apt"
-OUTPUT_PATH="output/apt"
+DATASET_PATH="/home/user/data/colmap_workspace"
+OUTPUT_PATH="output/colmap_workspace"
 
-STRATEGY="mcmc"
-ITERATIONS=7000
-
-# Run the training command
 ./build/LichtFeld-Studio \
-  -d ${DATASET_PATH} \
-  -o ${OUTPUT_PATH} \
-  --eval \
-  --save-eval-images \
-  --render-mode RGB \
-  -i ${ITERATIONS} \
-  --headless \
-  --gut \
-  --strategy ${STRATEGY} \
-  > train.log 2>&1 &
-
+    -d ${DATASET_PATH} \
+    -o ${OUTPUT_PATH} \
+    --headless \
+    --eval \
+    --save-eval-images \
+    --render-mode RGB_D \
+    -i 30000 \
+    > train.log 2>&1 &
 
 echo "Training started. Check train.log for progress."
