@@ -14,7 +14,7 @@ OUTPUT_PATH="output/colmap_workspace"
     --render-mode RGB_D \
     --bilateral-grid \
     --test-every 20 \
-    -i 70000 \
+    -i 7000 \
     > train.log 2>&1 &
 
 echo "Training started. Check train.log for progress."
