@@ -82,6 +82,8 @@ namespace gs::training {
         }
 
         Split get_split() const { return _split; }
+        
+        const std::vector<size_t>& get_indices() const { return _indices; }
 
         size_t get_num_bytes() const {
             if (_cameras.empty()) {

@@ -75,6 +75,22 @@ namespace gs::training {
                 params_.optimization.bilateral_grid_Y,
                 params_.optimization.bilateral_grid_W);
 
+            // Create index mapping for train/val split
+            if (train_dataset_ && base_dataset_) {
+                std::vector<int> index_mapping(base_dataset_->size().value(), -1);
+                
+                // Get training indices from the training dataset
+                auto train_indices = train_dataset_->get_indices();
+                for (size_t i = 0; i < train_indices.size(); ++i) {
+                    size_t dataset_idx = train_indices[i];
+                    if (dataset_idx < index_mapping.size()) {
+                        index_mapping[dataset_idx] = static_cast<int>(i);
+                    }
+                }
+                
+                bilateral_grid_->set_index_mapping(index_mapping);
+            }
+
             bilateral_grid_optimizer_ = std::make_unique<torch::optim::Adam>(
                 std::vector<torch::Tensor>{bilateral_grid_->parameters()},
                 torch::optim::AdamOptions(params_.optimization.bilateral_grid_lr)
