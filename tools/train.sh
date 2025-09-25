@@ -12,7 +12,7 @@ OUTPUT_PATH="output/colmap_workspace"
     --eval \
     --save-eval-images \
     --render-mode RGB_D \
-    -i 7000 \
+    -i 30000 \
     > train.log 2>&1 &
 
 echo "Training started. Check train.log for progress."
