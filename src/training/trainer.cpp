@@ -309,11 +309,9 @@ namespace gs::training {
                          val_dataset_->size().value());
             } else {
                 // Use all images for training
-                train_dataset_ = base_dataset_;
-                val_dataset_ = nullptr;
-
-                LOG_INFO("Using all {} images for training (no evaluation)",
-                         train_dataset_->size().value());
+                if (bilateral_grid_) {
+                    bilateral_grid_->set_index_mapping(index_mapping);
+                }
             }
 
             // chage resize factor (change may comes from gui)
