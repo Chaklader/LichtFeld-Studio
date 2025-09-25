@@ -10,6 +10,9 @@ namespace gs::training {
     class BilateralGrid {
     public:
         BilateralGrid(int num_images, int grid_W = 16, int grid_H = 16, int grid_L = 8);
+        
+        // Set index mapping for train/val splits
+        void set_index_mapping(const std::vector<int>& dataset_to_grid_mapping);
 
         // Apply bilateral grid to rendered image
         torch::Tensor apply(const torch::Tensor& rgb, int image_idx);
@@ -32,6 +35,7 @@ namespace gs::training {
         int grid_width_;
         int grid_height_;
         int grid_guidance_;
+        std::vector<int> index_mapping_; // Maps dataset indices to grid indices
     };
 
 } // namespace gs::training

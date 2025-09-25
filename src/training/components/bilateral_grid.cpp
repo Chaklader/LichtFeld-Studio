@@ -91,9 +91,22 @@ namespace gs::training {
         grids_.set_requires_grad(true);
     }
 
+    void BilateralGrid::set_index_mapping(const std::vector<int>& dataset_to_grid_mapping) {
+        index_mapping_ = dataset_to_grid_mapping;
+    }
+
     torch::Tensor BilateralGrid::apply(const torch::Tensor& rgb, int image_idx) {
-        TORCH_CHECK(image_idx >= 0 && image_idx < num_images_,
-                    "Invalid image index: ", image_idx);
+        // Map dataset index to grid index if mapping exists
+        int grid_idx = image_idx;
+        if (!index_mapping_.empty()) {
+            TORCH_CHECK(image_idx >= 0 && image_idx < static_cast<int>(index_mapping_.size()),
+                        "Invalid dataset image index: ", image_idx);
+            grid_idx = index_mapping_[image_idx];
+            TORCH_CHECK(grid_idx >= 0, "Image index ", image_idx, " not in training set");
+        }
+        
+        TORCH_CHECK(grid_idx >= 0 && grid_idx < num_images_,
+                    "Invalid grid index: ", grid_idx, " (mapped from dataset index: ", image_idx, ")");
 
         // Handle different input formats
         torch::Tensor rgb_processed;
@@ -111,8 +124,8 @@ namespace gs::training {
         // Convert from [C, H, W] to [H, W, C]
         auto rgb_hwc = rgb_processed.permute({1, 2, 0}).contiguous();
 
-        // Apply bilateral grid
-        auto grid = grids_[image_idx];
+        // Apply bilateral grid using mapped index
+        auto grid = grids_[grid_idx];
         auto output = BilateralGridSliceFunction::apply(grid, rgb_hwc)[0];
 
         // Convert back to [C, H, W]

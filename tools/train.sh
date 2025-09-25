@@ -13,7 +13,7 @@ OUTPUT_PATH="output/colmap_workspace"
     --save-eval-images \
     --render-mode RGB_D \
     --bilateral-grid \
-    --test-every 10 \
+    --test-every 20 \
     -i 70000 \
     > train.log 2>&1 &
 
