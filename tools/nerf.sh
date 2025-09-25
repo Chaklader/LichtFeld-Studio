@@ -54,7 +54,8 @@ export QT_QPA_PLATFORM=offscreen
 ns-process-data images \
   --data        "$RAW_DATA_DIR" \
   --output-dir  "$OUTPUT_DIR" \
-  --num-downscales "$NUM_DOWNSCALES" 
+  --num-downscales "$NUM_DOWNSCALES" \
+  --no-gpu
 
 echo "[process_dataset] Conversion finished. Key files:"
 if [[ -f "$OUTPUT_DIR/transforms.json" ]]; then
