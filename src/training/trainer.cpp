@@ -309,9 +309,6 @@ namespace gs::training {
                          val_dataset_->size().value());
             } else {
                 // Use all images for training
-                if (bilateral_grid_) {
-                    bilateral_grid_->set_index_mapping(index_mapping);
-                }
             }
 
             // chage resize factor (change may comes from gui)
